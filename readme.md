@@ -7,7 +7,6 @@
 I have used these packages :
 
 - Express
-- Formidable
 - Mongoose
 - Dotenv
 - cors
