@@ -43,13 +43,17 @@ router.post("/api/wilder/create", async (req, res) => {
 
 // Route Update
 router.put("/api/wilder/update/:id", async (req, res) => {
-  const options = { new: true };
-  const modifyWilder = await Wilder.findByIdAndUpdate(
-    req.params.id,
-    req.body,
-    options
-  );
-  res.status(200).json({ modifyWilder });
+  try {
+    const options = { new: true };
+    const modifyWilder = await Wilder.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      options
+    );
+    res.status(200).json({ modifyWilder });
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
 });
 
 module.exports = router;
