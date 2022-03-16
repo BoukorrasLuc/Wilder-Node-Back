@@ -56,4 +56,14 @@ router.put("/api/wilder/update/:id", async (req, res) => {
   }
 });
 
+//  Route delete
+router.delete("/api/wilder/delete/:id", async (req, res) => {
+  try {
+    await Wilder.deleteOne({ _id: req.params.id });
+    res.json({ message: "Wilder deleted succesfully !" });
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+});
+
 module.exports = router;
